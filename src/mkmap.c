@@ -151,14 +151,14 @@ pass_three(schar bg_typ, schar fg_typ)
  */
 void
 flood_fill_rm(
-    int sx,
-    int sy,
+    coordxy sx,
+    coordxy sy,
     int rmno,
     boolean lit,
     boolean anyroom)
 {
-    int i;
-    int nx;
+    coordxy i;
+    coordxy nx;
     schar fg_typ = levl[sx][sy].typ;
 
     /* back up to find leftmost uninitialized location */
