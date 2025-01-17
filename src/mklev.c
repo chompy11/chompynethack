@@ -673,9 +673,16 @@ makeniche(int trap_type)
                     if (trap_type != ROCKTRAP)
                         ttmp->once = 1;
                     if (trap_engravings[trap_type]) {
+                        int engr_type = DUST;
+                        /* "Vlad was here" might be in blood instead
+                           of dust, more likely at deep levels */
+                        if (trap_type == TRAPDOOR
+                            && depth(&u.uz) - 9 > rn2(12)) {
+                            engr_type = ENGR_BLOOD;
+                        }
                         make_engr_at(xx, yy - dy,
                                      trap_engravings[trap_type], 0L,
-                                     DUST);
+                                     engr_type);
                         wipe_engr_at(xx, yy - dy, 5,
                                      FALSE); /* age it a little */
                     }
